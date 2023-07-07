@@ -32,7 +32,7 @@ public class Universidad {
                     matricularAlumno();
                     break;
                 case 4:
-                    mostrarAlumnosRegistrados();
+                    mostrarAlumnosRegistradosSegunRegion();
                     break;
                 case 5:
                     System.out.println("¡Hasta luego!");
@@ -68,12 +68,14 @@ public class Universidad {
         System.out.println("Ingresar edad del alumno: ");
         int edad = Integer.parseInt(scanner.nextLine());
 
-        Alumno alumno = new Alumno(nombre, edad, dni);
+        System.out.println("Ingresar region del alumno: ");
+        String region = scanner.nextLine();
+
+        Alumno alumno = new Alumno(nombre, edad, dni, region);
         this.listaAlumnos.add(alumno);
 
         System.out.println("Alumno agregado correctamente.");
         System.out.println("________________________________");
-
     }
 
     private void agregarCarrera() {
@@ -108,10 +110,6 @@ public class Universidad {
         }
 
         miCarrera.matricularAlumno(alumno);
-
-        System.out.println("Listo causaaaaa");
-        System.out.println("________________________________");
-
     }
 
     private Alumno buscarAlumnoporDni(String dniAlumno) {
@@ -122,20 +120,19 @@ public class Universidad {
         return null;
     }
 
-    private void mostrarAlumnosRegistrados() {
-        for (Carrera carrera : this.listaCarreras) {
-            carrera.mostrarAlumnosRegistrados();
+
+
+
+    private void mostrarAlumnosRegistradosSegunRegion() {
+        System.out.println("Ingrese la region de los alumno que desea buscar: ");
+        String regionAlumno = scanner.nextLine();
+
+        for(Carrera car: this.listaCarreras) {
+            car.mostrarAlumnosRegistradosSegunRegion(regionAlumno);
         }
     }
 
-    private Alumno buscarAlumno(String dniAlumno) {
-        for (Alumno dni : this.listaAlumnos) {
-            if (dni.getNombre().equals(dniAlumno)) {
-                return dni;
-            }
-        }
-        return null;
-    }
+
 
     private Carrera buscarCarrera(String nombreCarrera) {
         for (Carrera carrera : this.listaCarreras) {
@@ -146,4 +143,5 @@ public class Universidad {
         return null;
     }
 
+    
 }

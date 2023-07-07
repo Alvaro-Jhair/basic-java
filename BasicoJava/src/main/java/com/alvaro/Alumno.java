@@ -6,11 +6,14 @@ public class Alumno {
 
     private String dni;
 
-    public Alumno(String nombre, int edad, String dni) {
+    private String region;
+
+    public Alumno(String nombre, int edad, String dni, String region) {
 
         this.nombre = nombre;
         this.edad = edad;
         this.dni = dni;
+        this.region = region;
     }
 
     public String getNombre() {
@@ -23,9 +26,13 @@ public class Alumno {
     }
 
     public String getDni() {
+
         return dni;
     }
 
+    public String getRegion(){
+        return region;
+    }
 }
 
 

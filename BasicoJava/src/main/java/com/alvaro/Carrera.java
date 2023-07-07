@@ -16,7 +16,6 @@ public class Carrera {
     }
 
     public String getNombre() {
-
         return nombre;
     }
 
@@ -27,22 +26,34 @@ public class Carrera {
     }
 
     public void matricularAlumno(Alumno al) {
-        this.alumnos.add(al);
 
         for (Alumno alumno : alumnos) {
-            if (alumno.getDni().equals())
-                System.out.println("Ya estas oe ");
+            if (alumno.getDni().equals(al.getDni())) {
+                System.out.println("Alumno ya está registrado ");
+                return; //para salir y no continuar con el resto del CÓDIGO
+            }
         }
+        this.alumnos.add(al);
     }
 
 
-    public void mostrarAlumnosRegistrados() {
+    public void mostrarAlumnosRegistradosSegunRegion(String region) {
         System.out.println("Carrera : " + nombre);
         for (Alumno alumno : this.alumnos) {
-            System.out.println("Nombre:  " + alumno.getNombre());
-            System.out.println("Dni: " + alumno.getDni());
-            System.out.println("Edad: " + alumno.getEdad());
-            System.out.println("________________________________");
+            if (alumno.getRegion().equals(region)) {
+                System.out.println("Nombre:  " + alumno.getNombre());
+                System.out.println("Dni: " + alumno.getDni());
+                System.out.println("Edad: " + alumno.getEdad());
+                System.out.println("Region: " + alumno.getRegion());
+                System.out.println("________________________________");
+
+            }
+        }
+    }
+
+    boolean estaMatriculado(String Alumno){
+        for (){
+
         }
     }
 }
