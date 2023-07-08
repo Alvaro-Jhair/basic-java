@@ -9,11 +9,17 @@ public class Ejercicio4 {
         scanner = new Scanner(System.in);
         System.out.println("Ingrese numero:  ");
         int numero = Integer.parseInt(scanner.nextLine());
-        for (int i = 2; i <= numero; i++) {
+        boolean esPrimo = true;
+        for (int i = 2; i <= numero / 2; i++) {
             if (numero % i == 0) {
-                System.out.println(numero + " no es primo ");
-            }return;
-
+                esPrimo = false;
+                break;
+            }
+        }
+        if (esPrimo) {
+            System.out.println(numero + " es  primo.");
+        } else {
+            System.out.println(numero + " no es primo.");
         }
     }
 }
