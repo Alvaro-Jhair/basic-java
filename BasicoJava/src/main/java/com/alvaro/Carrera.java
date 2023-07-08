@@ -51,10 +51,6 @@ public class Carrera {
         }
     }
 
-    boolean estaMatriculado(String Alumno){
-        for (){
 
-        }
-    }
 }
 
