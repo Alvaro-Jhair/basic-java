@@ -71,7 +71,10 @@ public class Universidad {
         System.out.println("Ingresar region del alumno: ");
         String region = scanner.nextLine();
 
-        Alumno alumno = new Alumno(nombre, edad, dni, region);
+        System.out.println("Ingresar apellido del alumno: ");
+        String apellido = scanner.nextLine();
+
+        Alumno alumno = new Alumno(nombre, edad, dni, region, apellido);
         this.listaAlumnos.add(alumno);
 
         System.out.println("Alumno agregado correctamente.");
