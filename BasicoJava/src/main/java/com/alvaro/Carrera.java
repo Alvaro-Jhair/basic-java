@@ -19,21 +19,18 @@ public class Carrera {
         return nombre;
     }
 
-    private void agregarAlumno(Alumno alumno) {
-        this.alumnos.add(alumno);
-        System.out.println("Alumno agregado correctamente.");
-        System.out.println("________________________________");
-    }
 
     public void matricularAlumno(Alumno al) {
+        this.alumnos.add(al);
 
         for (Alumno alumno : alumnos) {
-            if (alumno.getDni().equals(al.getDni())) {
-                System.out.println("Alumno ya está registrado ");
-                return; //para salir y no continuar con el resto del CÓDIGO
+            if (alumno.getNombre().equals(al.getNombre())) {
+                System.out.println("Alumno ya esta matriculado correctamente en la carrera de " + getNombre());
+            } else {
+                System.out.println("El alumno ya esta matriculado en la carrera de " + getNombre());
+                return;
             }
         }
-        this.alumnos.add(al);
     }
 
 
@@ -42,13 +39,26 @@ public class Carrera {
         for (Alumno alumno : this.alumnos) {
             if (alumno.getRegion().equals(region)) {
                 System.out.println("Nombre:  " + alumno.getNombre());
+                System.out.println("Apellido Paterno: " + alumno.getApellidopaterno());
+                System.out.println("Apellido Materno: " + alumno.getApellidomaterno());
                 System.out.println("Dni: " + alumno.getDni());
                 System.out.println("Edad: " + alumno.getEdad());
                 System.out.println("Region: " + alumno.getRegion());
                 System.out.println("________________________________");
 
+
             }
         }
+    }
+
+    public boolean existeMatricula(String dni) {
+
+        for (Alumno a : this.alumnos) {
+            if (a.getDni().equals(dni)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

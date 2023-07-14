@@ -62,19 +62,23 @@ public class Universidad {
         System.out.print("Ingresar el nombre del alumno: ");
         String nombre = scanner.nextLine();
 
-        System.out.println("Ingresar dni del alumno: ");
+        System.out.print("Ingresar dni del alumno: ");
         String dni = scanner.nextLine();
 
-        System.out.println("Ingresar edad del alumno: ");
+        System.out.print("Ingresar edad del alumno: ");
         int edad = Integer.parseInt(scanner.nextLine());
 
-        System.out.println("Ingresar region del alumno: ");
+        System.out.print("Ingresar region del alumno: ");
         String region = scanner.nextLine();
 
-        System.out.println("Ingresar apellido del alumno: ");
-        String apellido = scanner.nextLine();
+        System.out.print("Ingresar apellido paterno del alumno: ");
+        String apellidopaterno = scanner.nextLine();
 
-        Alumno alumno = new Alumno(nombre, edad, dni, region, apellido);
+
+        System.out.print("Ingresar apellido materno del alumno: ");
+        String apellidomaterno = scanner.nextLine();
+
+        Alumno alumno = new Alumno(nombre, edad, dni, region, apellidopaterno, apellidomaterno);
         this.listaAlumnos.add(alumno);
 
         System.out.println("Alumno agregado correctamente.");
@@ -97,10 +101,20 @@ public class Universidad {
 
         Alumno alumno = buscarAlumnoporDni(dniAlumno);
         if (alumno == null) {
-            System.out.println("Alumno no matriculado");
+            System.out.println("Alumno no existe, por favor registre primero al alumno");
             System.out.println("________________________________");
             return;
         }
+
+        for (Carrera c : this.listaCarreras) {
+            if (c.existeMatricula(dniAlumno)) {
+                System.out.println("Alumno ya fue registrado en una carrera: " + c.getNombre());
+                System.out.println("No es posible registrar en una nueva carrera.");
+                System.out.println("________________________________");
+                return;
+            }
+        }
+
 
         System.out.print("Ingrese el nombre de la carrera: ");
         String nombreCarrera = scanner.nextLine();
@@ -110,9 +124,11 @@ public class Universidad {
             System.out.println("Carrera no encontrada");
             System.out.println("________________________________");
             return;
+
         }
 
         miCarrera.matricularAlumno(alumno);
+
     }
 
     private Alumno buscarAlumnoporDni(String dniAlumno) {
@@ -124,17 +140,14 @@ public class Universidad {
     }
 
 
-
-
     private void mostrarAlumnosRegistradosSegunRegion() {
         System.out.println("Ingrese la region de los alumno que desea buscar: ");
         String regionAlumno = scanner.nextLine();
 
-        for(Carrera car: this.listaCarreras) {
+        for (Carrera car : this.listaCarreras) {
             car.mostrarAlumnosRegistradosSegunRegion(regionAlumno);
         }
     }
-
 
 
     private Carrera buscarCarrera(String nombreCarrera) {
@@ -146,5 +159,5 @@ public class Universidad {
         return null;
     }
 
-    
+
 }
