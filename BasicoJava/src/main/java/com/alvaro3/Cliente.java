@@ -5,7 +5,7 @@ public class Cliente {
     private String tarjeta;
     private String clave;
 
-    public Cliente(String nombre, String tarjeta, String clave) {
+    public Cliente(String nombre, String tarjeta) {
         this.nombre = nombre;
         this.tarjeta = tarjeta;
         this.clave = clave;
