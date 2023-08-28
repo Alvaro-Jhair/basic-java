@@ -61,6 +61,7 @@ public class Banco2 {
                     System.out.println("Clave incorecta ( " + intentos + " intentos restantes )");
                 } else {
                     System.out.println("Te quedaste sin intentos");
+
                 }
             }
         }
